@@ -2,7 +2,8 @@
   "name": "portfolio",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://LEELA-96.github.io/Portfolio",
+  "homepage": "https://LEELA-96.github.io/Portfolio",  
+
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
