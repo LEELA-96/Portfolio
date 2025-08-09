@@ -4,7 +4,7 @@
   "private": true,
   "homepage": "https://LEELA-96.github.io/Portfolio",
   "dependencies": {
-    // your existing dependencies here
+   
   },
   "scripts": {
     "start": "react-scripts start",
@@ -15,5 +15,5 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
-  // other existing keys here
+
 }
