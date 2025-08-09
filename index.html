@@ -1,361 +1,138 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Leela Prasad A — Senior AI/ML Engineer</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700;800&family=Roboto+Mono:wght@600&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --bg:#081018;
-    --panel:#0d1115;
-    --muted:#9aa6b2;
-    --accent:#29f0c1;
-    --accent-2:#5ad1ff;
-    --glass: rgba(255,255,255,0.03);
-    --card:#0c1114;
-  }
-  *{box-sizing:border-box}
-  html,body{height:100%}
-  body{
-    margin:0;
-    font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;
-    background:
-      radial-gradient(900px 400px at 10% 10%, rgba(42,60,86,0.04), transparent 10%),
-      radial-gradient(700px 300px at 90% 90%, rgba(41,240,193,0.02), transparent 10%),
-      var(--bg);
-    color:#e6eef3;
-    -webkit-font-smoothing:antialiased;
-    -moz-osx-font-smoothing:grayscale;
-  }
-
-  /* layout */
-  .wrap{
-    display:flex;
-    gap:28px;
-    max-width:1200px;
-    margin:32px auto;
-    padding:28px;
-  }
-  .panel {
-    width:320px;
-    background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-    border-radius:14px;
-    padding:22px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.6);
-    position:sticky;
-    top:28px;
-    height:fit-content;
-  }
-  .avatar{
-    width:88px;height:88px;border-radius:50%;
-    display:flex;align-items:center;justify-content:center;
-    margin:0 auto 14px;
-    background:linear-gradient(135deg,var(--accent),var(--accent-2));
-    color:#042022;font-weight:800;font-family:Roboto Mono,monospace;font-size:30px;
-    box-shadow:0 8px 26px rgba(41,240,193,0.12);
-  }
-  .name { text-align:center; font-weight:800; font-size:18px; color:#eafff6; margin-bottom:4px; }
-  .role { text-align:center; color:var(--muted); font-size:13px; margin-bottom:14px; }
-  .contact small{ display:block; color:var(--muted); font-size:13px; margin:6px 0; }
-  .contact a { color:var(--accent); text-decoration:none; font-weight:600; }
-  .tags { display:flex; flex-wrap:wrap; gap:6px; justify-content:center; margin-top:14px; }
-  .tag { font-size:12px; padding:6px 8px; border-radius:8px; background:rgba(255,255,255,0.02); color:var(--muted); border:1px solid rgba(255,255,255,0.02); }
-
-  .panel .actions { display:flex; gap:8px; justify-content:center; margin-top:16px; flex-wrap:wrap; }
-  .btn { padding:10px 12px; border-radius:10px; font-weight:700; cursor:pointer; border:none; text-decoration:none; display:inline-flex; gap:8px; align-items:center; }
-  .btn-primary { background:linear-gradient(90deg,var(--accent),var(--accent-2)); color:#052022; box-shadow:0 10px 30px rgba(41,240,193,0.08); }
-  .btn-ghost { background:transparent; border:1px solid rgba(255,255,255,0.04); color:var(--accent-2); }
-
-  .content { flex:1; display:flex; flex-direction:column; gap:20px; }
-  .hero, .section { background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.02)); padding:22px; border-radius:12px; box-shadow: 0 8px 30px rgba(2,6,10,0.6); }
-  .hero h1 { font-size:24px; margin:0 0 6px; color:#eafdf6; }
-  .hero p.lead { color:var(--muted); margin:8px 0 12px; line-height:1.55; }
-  .hero .cta { display:flex; gap:12px; flex-wrap:wrap; }
-
-  h2.section-title { color:var(--accent-2); margin:0 0 10px; font-size:16px; font-weight:700; border-bottom:2px solid rgba(255,255,255,0.02); padding-bottom:6px; display:inline-block; }
-
-  /* summary */
-  .summary-list { margin-top:8px; color:#cfeff6; font-weight:400; line-height:1.5; }
-
-  /* skills */
-  .skills-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:10px; margin-top:10px; }
-  .skill-col { background:rgba(255,255,255,0.01); padding:12px; border-radius:10px; border:1px solid rgba(255,255,255,0.02); color:var(--muted); font-size:14px; }
-  .skill-col strong { color:var(--accent); font-weight:700; display:block; margin-bottom:8px; }
-
-  /* projects */
-  .grid { display:grid; grid-template-columns: repeat(2,1fr); gap:14px; margin-top:12px; }
-  .proj {
-    background:linear-gradient(180deg, rgba(255,255,255,0.015), rgba(255,255,255,0.01));
-    padding:14px; border-radius:10px; border:1px solid rgba(255,255,255,0.03);
-    position:relative; overflow:hidden; transition:transform .28s cubic-bezier(.2,.9,.2,1), box-shadow .28s ease;
-  }
-  .proj:hover{ transform:translateY(-8px); box-shadow:0 18px 40px rgba(41,208,255,0.06); }
-  .proj h3{ margin:0 0 6px; color:#e6fff9; font-size:15px; }
-  .proj p.lead{ color:var(--muted); font-size:13px; margin-bottom:8px; }
-  .proj .details{ max-height:0; opacity:0; overflow:hidden; transition:all .32s ease; color:#bfefff; font-size:13px; margin:0; padding:0; }
-  .proj:hover .details, .proj:focus-within .details { max-height:240px; opacity:1; margin-top:8px; }
-
-  .certs { display:flex; gap:12px; flex-wrap:wrap; margin-top:8px; }
-  .cert { padding:12px; background:linear-gradient(180deg, rgba(255,255,255,0.015), rgba(255,255,255,0.01)); border-radius:10px; border:1px solid rgba(255,255,255,0.03); color:var(--muted); min-width:220px; }
-  .cert .title { color:var(--accent); font-weight:700; margin-bottom:6px; }
-
-  .exp-item { padding:12px; border-radius:10px; background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent); border:1px solid rgba(255,255,255,0.02); margin-bottom:10px; }
-  .exp-item h4 { margin:0; color:var(--accent-2); font-size:15px; }
-  .exp-item .meta { color:var(--muted); font-size:13px; margin-bottom:8px; }
-  .exp-item ul { margin:6px 0 0 18px; color:#cfeff6; font-size:13px; }
-
-  footer { text-align:center; color:var(--muted); font-size:13px; margin-top:6px; padding-bottom:18px; }
-
-  /* entrance reveal */
-  .reveal { opacity:0; transform:translateY(10px); transition: all .6s cubic-bezier(.2,.9,.3,1); }
-  .reveal.show { opacity:1; transform:none; }
-
-  /* responsive */
-  @media (max-width:980px){
-    .wrap{ margin:18px; flex-direction:column; padding:16px; }
-    .panel{ width:100%; position:relative; top:auto; }
-    .content{ margin-top:6px; }
-    .grid{ grid-template-columns:1fr; }
-    .skills-grid { grid-template-columns:1fr; }
-    .proj { min-height: auto; }
-  }
-</style>
+<link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-<div class="wrap">
+<header>
+  <h1>Leela Prasad A</h1>
+  <p>Senior AI/ML Engineer – AWS Certified | Dallas, TX</p>
+  <p>Email: <a href="mailto:leelaprasad.it@gmail.com">leelaprasad.it@gmail.com</a> | Phone: <a href="tel:+14692989432">+1 (469) 298-9432</a></p>
+  <p><a href="https://github.com/LEELA-96" target="_blank" rel="noopener">GitHub</a> | <a href="#" id="linkedin">LinkedIn</a></p>
+</header>
 
-  <!-- LEFT PANEL -->
-  <aside class="panel reveal" id="leftPanel">
-    <div class="avatar" aria-hidden="true">LP</div>
-    <div class="name">Leela Prasad A</div>
-    <div class="role">Senior AI/ML Engineer – AWS Certified<br><small style="color:var(--muted)">Dallas, Texas</small></div>
+<section>
+  <h2>Summary</h2>
+  <p>Senior AI/ML Engineer with 8+ years in Generative AI, NLP, and data engineering across finance, healthcare, and e-commerce. Expert in RAG platforms, LLMOps, and hybrid-cloud deployments, delivering 40% faster query resolution, 30% hallucination reduction, and 99.9% uptime.</p>
+</section>
 
-    <div class="contact">
-      <div><small><strong>Email</strong></small></div>
-      <div><small><a id="mailtoPanel" href="mailto:leelaprasad.it@gmail.com">leelaprasad.it@gmail.com</a></small></div>
+<section>
+  <h2>Technical Skills</h2>
+  <ul>
+    <li><strong>Data Analysis & Visualization:</strong> Excel, Tableau, AWS QuickSight, Snowflake, Pandas, NumPy, Matplotlib, Seaborn, SciPy, LangChain, LangSmith</li>
+    <li><strong>Generative AI & NLP:</strong> LLMs, RAG, Prompt Engineering, Transformers, LoRA, QLoRA, PEFT, OpenAI GPT-4/3.5, Anthropic, Amazon Bedrock</li>
+    <li><strong>Development & MLOps:</strong> Python, FastAPI, Flask, Docker, Kubernetes (EKS/AKS), Jenkins, Terraform, MLflow, Azure ML, SageMaker</li>
+    <li><strong>Data Engineering:</strong> Apache Spark, Kafka, Airflow, AWS Glue, Kinesis, PostgreSQL, OpenSearch, Elasticsearch</li>
+  </ul>
+</section>
 
-      <div style="margin-top:8px"><small><strong>Phone</strong></small></div>
-      <div><small><a href="tel:+14692989432">+1 (469) 298-9432</a></small></div>
+<section>
+  <h2>Projects</h2>
+  <article>
+    <h3>Hybrid-cloud RAG Platform — Fidelity</h3>
+    <ul>
+      <li>Architected hybrid-cloud RAG — improved retrieval accuracy by 25%.</li>
+      <li>Automated ingestion of 5M+ docs and multi-model embeddings.</li>
+      <li>Built FastAPI microservices used by 12+ business units.</li>
+      <li>Reduced average query resolution time by 40%.</li>
+    </ul>
+  </article>
+  <article>
+    <h3>Virtual Health Assistant — Teladoc Health</h3>
+    <ul>
+      <li>Improved user satisfaction by 25% via model & tooling improvements.</li>
+      <li>Built MLOps pipelines with Azure ML, Databricks, MLflow.</li>
+      <li>Fine-tuned BioBERT/ClinicalBERT and integrated LLM flows.</li>
+      <li>Implemented monitoring (Prometheus, Grafana).</li>
+    </ul>
+  </article>
+  <article>
+    <h3>Product Search Analytics — DataBeat</h3>
+    <ul>
+      <li>Processed 500M+ search events monthly (Spark).</li>
+      <li>Developed real-time ingestion with Kafka & Kinesis.</li>
+      <li>Improved search relevance & reduced “no results” queries.</li>
+      <li>Delivered dashboards using Tableau & QuickSight.</li>
+    </ul>
+  </article>
+  <article>
+    <h3>Customer Analytics & Automation — iLink Digital</h3>
+    <ul>
+      <li>Processed 500K+ daily records, reducing manual work 65%.</li>
+      <li>Built Flask REST APIs delivering KPIs within seconds.</li>
+      <li>Improved query performance by 70% via indexing & caching.</li>
+    </ul>
+  </article>
+</section>
 
-      <div style="margin-top:12px"><small><strong>Profiles</strong></small></div>
-      <div style="margin-top:6px">
-        <a href="https://github.com/LEELA-96" target="_blank" rel="noopener" class="tag">GitHub</a>
-        <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener" class="tag">LinkedIn</a>
-      </div>
-    </div>
+<section>
+  <h2>Experience</h2>
+  <article>
+    <h3>Senior ML Engineer — ECCP</h3>
+    <p><em>Fidelity Investments • May 2024 – Present • NC</em></p>
+    <ul>
+      <li>Architected hybrid-cloud RAG (OpenSearch & LangChain) — +25% retrieval accuracy, -40% query time.</li>
+      <li>Automated ingestion for 5M+ docs; multi-model embeddings; FastAPI microservices adopted by 12+ teams.</li>
+      <li>Fine-tuned GPT & Anthropic LLMs via LoRA/QLoRA & PEFT; reduced hallucinations 30%.</li>
+      <li>Led CI/CD with Jenkins & Terraform; managed AWS EKS & Azure AKS deployments (99.9% uptime).</li>
+    </ul>
+  </article>
+  <article>
+    <h3>Machine Learning Engineer</h3>
+    <p><em>Teladoc Health • Jul 2021 – Aug 2022 • Lewisville, TX</em></p>
+    <ul>
+      <li>Improved virtual assistant satisfaction by 25% through model improvements & tooling.</li>
+      <li>Built MLOps pipelines (Azure ML, Databricks, MLflow) reducing deployment time to &lt;1 day.</li>
+    </ul>
+  </article>
+  <article>
+    <h3>Data Engineer</h3>
+    <p><em>DataBeat • Jun 2019 – Jun 2021 • Hyderabad, India</em></p>
+    <ul>
+      <li>Processed 500M+ monthly search events with Spark; reduced analytics latency from 24h to 3h.</li>
+      <li>Integrated Elasticsearch with relevance tuning; improved search accuracy 40%.</li>
+    </ul>
+  </article>
+  <article>
+    <h3>Python Developer</h3>
+    <p><em>iLink Digital • May 2017 – May 2019 • Chennai, India</em></p>
+    <ul>
+      <li>Automated 500K+ daily records; saved $50K annually; built REST APIs & ETL pipelines.</li>
+    </ul>
+  </article>
+</section>
 
-    <div class="tags" aria-hidden="true">
-      <span class="tag">LLMs</span>
-      <span class="tag">RAG</span>
-      <span class="tag">MLOps</span>
-      <span class="tag">Data Eng</span>
-    </div>
+<section>
+  <h2>Education & Certifications</h2>
+  <ul>
+    <li><strong>MS, Computer Science</strong>, University of North Texas</li>
+    <li><strong>BTech, Computer Science</strong>, SRKR Engineering College</li>
+    <li><strong>AWS ML Specialty</strong> — AWS Certified ML Specialty</li>
+    <li><strong>Azure AI Associate</strong> — Microsoft Azure AI</li>
+    <li><strong>Generative AI</strong> — DeepLearning.AI (LLMs)</li>
+    <li><strong>Mathematics for ML</strong> — Imperial College London</li>
+    <li><strong>Databases & SQL</strong> — IBM</li>
+  </ul>
+</section>
 
-    <div class="actions" style="margin-top:18px; justify-content:center;">
-      <a id="openGmail" class="btn btn-primary" href="https://mail.google.com/mail/?view=cm&fs=1&to=leelaprasad.it@gmail.com" target="_blank" rel="noopener" title="Open Gmail compose (web)">✉ Compose (Gmail)</a>
-      <a class="btn btn-ghost" href="mailto:leelaprasad.it@gmail.com" title="Open default mail app">📩 Mail App</a>
-      <a class="btn btn-ghost" href="/resume.pdf" download title="Download resume">📄 Resume</a>
-    </div>
-  </aside>
-
-  <!-- RIGHT CONTENT -->
-  <main class="content">
-
-    <!-- HERO -->
-    <section class="hero reveal" id="hero">
-      <h1>Senior AI/ML Engineer — Generative AI • LLMs • Data Engineering</h1>
-      <p class="lead">Senior AI/ML Engineer with 8+ years in Generative AI, NLP, and data engineering across finance, healthcare, and e-commerce. Expert in RAG platforms, LLMOps, and hybrid-cloud deployments — delivering 40% faster query resolution, 30% hallucination reduction, and 99.9% uptime.</p>
-
-      <div class="cta">
-        <a id="ctaGmail" class="btn btn-primary" href="https://mail.google.com/mail/?view=cm&fs=1&to=leelaprasad.it@gmail.com" target="_blank" rel="noopener">✉ Get in Touch (Gmail)</a>
-        <a class="btn btn-ghost" href="mailto:leelaprasad.it@gmail.com">Open mail app</a>
-      </div>
-    </section>
-
-    <!-- SUMMARY & SKILLS -->
-    <section class="section reveal" id="summary">
-      <h2 class="section-title">Summary</h2>
-      <div class="summary-list">
-        <p>Senior AI/ML Engineer with 8+ years in Generative AI, NLP, and data engineering across finance, healthcare, and e-commerce. Expert in RAG platforms, LLMOps, and hybrid-cloud deployments — delivering faster query resolution, lower hallucination, and production reliability.</p>
-      </div>
-
-      <div style="margin-top:14px;">
-        <h3 style="color:var(--accent); margin:0 0 8px;">Technical Skills</h3>
-        <div class="skills-grid">
-          <div class="skill-col">
-            <strong>Data Analysis & Visualization</strong>
-            Excel, Tableau, AWS QuickSight, Snowflake, Pandas, NumPy, Matplotlib, Seaborn, SciPy, LangChain, LangSmith
-          </div>
-          <div class="skill-col">
-            <strong>Generative AI & NLP</strong>
-            LLMs, RAG, Prompt Engineering, Transformers, LoRA, QLoRA, PEFT, OpenAI GPT-4/3.5, Anthropic, Amazon Bedrock
-          </div>
-          <div class="skill-col">
-            <strong>Development & MLOps</strong>
-            Python, FastAPI, Flask, Docker, Kubernetes (EKS/AKS), Jenkins, Terraform, MLflow, Azure ML, SageMaker
-          </div>
-          <div class="skill-col">
-            <strong>Data Engineering</strong>
-            Apache Spark, Kafka, Airflow, AWS Glue, Kinesis, PostgreSQL, OpenSearch, Elasticsearch
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- PROJECTS -->
-    <section class="section reveal" id="projects">
-      <h2 class="section-title">Projects</h2>
-      <div class="grid" role="list">
-        <article class="proj" tabindex="0" role="listitem" aria-label="Hybrid-cloud RAG Platform">
-          <h3>Hybrid-cloud RAG Platform — Fidelity</h3>
-          <p class="lead">OpenSearch + LangChain orchestration for enterprise RAG</p>
-          <div class="details">
-            <ul>
-              <li>Architected hybrid-cloud RAG — improved retrieval accuracy by 25%.</li>
-              <li>Automated ingestion of 5M+ docs and multi-model embeddings.</li>
-              <li>Built FastAPI microservices used by 12+ business units.</li>
-              <li>Reduced average query resolution time by 40%.</li>
-            </ul>
-          </div>
-        </article>
-
-        <article class="proj" tabindex="0" role="listitem" aria-label="Virtual Health Assistant">
-          <h3>Virtual Health Assistant — Teladoc Health</h3>
-          <p class="lead">Conversational AI & MLOps enablement</p>
-          <div class="details">
-            <ul>
-              <li>Improved user satisfaction by 25% via model & tooling improvements.</li>
-              <li>Built MLOps pipelines with Azure ML, Databricks, MLflow.</li>
-              <li>Fine-tuned BioBERT/ClinicalBERT and integrated LLM flows.</li>
-              <li>Implemented monitoring (Prometheus, Grafana).</li>
-            </ul>
-          </div>
-        </article>
-
-        <article class="proj" tabindex="0" role="listitem" aria-label="Product Search Analytics">
-          <h3>Product Search Analytics — DataBeat</h3>
-          <p class="lead">Real-time product search pipelines</p>
-          <div class="details">
-            <ul>
-              <li>Processed 500M+ search events monthly (Spark).</li>
-              <li>Developed real-time ingestion with Kafka & Kinesis.</li>
-              <li>Improved search relevance & reduced "no results" queries.</li>
-              <li>Delivered dashboards using Tableau & QuickSight.</li>
-            </ul>
-          </div>
-        </article>
-
-        <article class="proj" tabindex="0" role="listitem" aria-label="Customer Analytics Automation">
-          <h3>Customer Analytics & Automation — iLink Digital</h3>
-          <p class="lead">Automation, APIs & ETL</p>
-          <div class="details">
-            <ul>
-              <li>Processed 500K+ daily records, reducing manual work 65%.</li>
-              <li>Built Flask REST APIs delivering KPIs within seconds.</li>
-              <li>Improved query performance by 70% via indexing & caching.</li>
-            </ul>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- EXPERIENCE -->
-    <section class="section reveal" id="experience">
-      <h2 class="section-title">Experience</h2>
-
-      <div class="exp-item">
-        <h4>Senior ML Engineer — ECCP</h4>
-        <div class="meta">Fidelity Investments • May 2024 – Present • NC</div>
-        <ul>
-          <li>Architected hybrid-cloud RAG (OpenSearch & LangChain) — +25% retrieval accuracy, -40% query time.</li>
-          <li>Automated ingestion for 5M+ docs; multi-model embeddings; FastAPI microservices adopted by 12+ teams.</li>
-          <li>Fine-tuned GPT & open-source models; established monitoring with Prometheus & Grafana.</li>
-        </ul>
-      </div>
-
-      <div class="exp-item">
-        <h4>Senior ML Engineer</h4>
-        <div class="meta">Teladoc Health • Jan 2022 – Apr 2024 • Remote</div>
-        <ul>
-          <li>Improved Virtual Health Assistant user satisfaction by 25% through NLP model improvements.</li>
-          <li>Built end-to-end MLOps pipelines with Azure ML, MLflow, Databricks.</li>
-          <li>Developed conversational AI enhancements with BioBERT & ClinicalBERT.</li>
-        </ul>
-      </div>
-
-      <div class="exp-item">
-        <h4>Senior Data Engineer</h4>
-        <div class="meta">DataBeat • Jul 2019 – Dec 2021 • TX</div>
-        <ul>
-          <li>Processed 500M+ search events monthly using Spark & Kafka.</li>
-          <li>Improved search relevance & reduced no-result queries.</li>
-          <li>Built dashboards with Tableau & QuickSight.</li>
-        </ul>
-      </div>
-
-      <div class="exp-item">
-        <h4>Data Analyst & Automation Engineer</h4>
-        <div class="meta">iLink Digital • Aug 2016 – Jun 2019 • TX</div>
-        <ul>
-          <li>Reduced manual processing time by 65% via ETL automation.</li>
-          <li>Built APIs with Flask for real-time KPI delivery.</li>
-          <li>Optimized query performance by 70% using indexing and caching.</li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- CERTIFICATIONS -->
-    <section class="section reveal" id="certifications">
-      <h2 class="section-title">Certifications</h2>
-      <div class="certs">
-        <div class="cert">
-          <div class="title">AWS Certified Machine Learning - Specialty</div>
-          <div>Issued Aug 2024</div>
-        </div>
-        <div class="cert">
-          <div class="title">Databricks Certified Data Engineer</div>
-          <div>Issued Dec 2023</div>
-        </div>
-        <div class="cert">
-          <div class="title">Azure AI Engineer Associate</div>
-          <div>Issued Nov 2023</div>
-        </div>
-      </div>
-    </section>
-
-  </main>
-</div>
-
-<footer class="reveal">
-  <small>© 2025 Leela Prasad A | Built with ❤️ and pure HTML/CSS</small>
+<footer>
+  <p>© 2025 Leela Prasad A — Built for recruiters & hiring teams • <a href="mailto:leelaprasad.it@gmail.com">Contact</a></p>
 </footer>
 
 <script>
-  // Simple reveal on scroll
-  const reveals = document.querySelectorAll('.reveal');
-  function revealOnScroll() {
-    const windowHeight = window.innerHeight;
-    reveals.forEach(el => {
-      const top = el.getBoundingClientRect().top;
-      if (top < windowHeight - 80) {
-        el.classList.add('show');
-      }
-    });
-  }
-  window.addEventListener('scroll', revealOnScroll);
-  window.addEventListener('load', revealOnScroll);
-
-  // Email link for mailto panel to open Gmail web compose if possible
-  document.getElementById('mailtoPanel').addEventListener('click', e => {
+  document.getElementById('linkedin').addEventListener('click', function(e) {
     e.preventDefault();
-    window.open('https://mail.google.com/mail/?view=cm&fs=1&to=leelaprasad.it@gmail.com', '_blank', 'noopener');
+    alert('Please provide your LinkedIn URL to update this link.');
   });
 </script>
 
 </body>
 </html>
+
 
 
 
