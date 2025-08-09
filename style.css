@@ -1,59 +1,13 @@
-/* Reset & basics */
-body {
-  font-family: Arial, sans-serif;
-  background-color: #0d1117;
-  color: #c9d1d9;
-  margin: 20px auto;
-  max-width: 800px;
-  line-height: 1.6;
-  padding: 0 15px;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background: #29f0c1;
+  border-radius: 8px;
 }
 
-a {
-  color: #58a6ff;
-  text-decoration: none;
-}
-a:hover {
-  text-decoration: underline;
-}
-
-header {
-  text-align: center;
-  margin-bottom: 40px;
-}
-header h1 {
-  font-size: 2.5rem;
-  margin-bottom: 0.25rem;
-  color: #58a6ff;
-}
-header p {
-  margin: 5px 0;
-  font-weight: 500;
-  color: #8b949e;
-}
-
-h2 {
-  color: #58a6ff;
-  border-bottom: 2px solid #30363d;
-  padding-bottom: 5px;
-}
-
-section {
-  margin-bottom: 30px;
-}
-
-ul {
-  list-style: inside disc;
-  padding-left: 0;
-}
-
-article {
-  margin-bottom: 20px;
-}
-
-footer {
-  text-align: center;
-  color: #8b949e;
-  font-size: 0.9rem;
-  margin-top: 40px;
-}
