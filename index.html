@@ -142,7 +142,7 @@
       <div style="margin-top:12px"><small><strong>Profiles</strong></small></div>
       <div style="margin-top:6px">
         <a href="https://github.com/LEELA-96" target="_blank" rel="noopener" class="tag">GitHub</a>
-        <a href="#" id="linkedinPlaceholder" class="tag">LinkedIn</a>
+        <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener" class="tag">LinkedIn</a>
       </div>
     </div>
 
@@ -271,108 +271,91 @@
         <ul>
           <li>Architected hybrid-cloud RAG (OpenSearch & LangChain) — +25% retrieval accuracy, -40% query time.</li>
           <li>Automated ingestion for 5M+ docs; multi-model embeddings; FastAPI microservices adopted by 12+ teams.</li>
-          <li>Fine-tuned GPT & Anthropic LLMs via LoRA/QLoRA & PEFT; reduced hallucinations 30%.</li>
-          <li>Led CI/CD with Jenkins & Terraform; managed AWS EKS & Azure AKS deployments (99.9% uptime).</li>
+          <li>Fine-tuned GPT & open-source models; established monitoring with Prometheus & Grafana.</li>
         </ul>
       </div>
 
       <div class="exp-item">
-        <h4>Machine Learning Engineer</h4>
-        <div class="meta">Teladoc Health • Jul 2021 – Aug 2022 • Lewisville, TX</div>
+        <h4>Senior ML Engineer</h4>
+        <div class="meta">Teladoc Health • Jan 2022 – Apr 2024 • Remote</div>
         <ul>
-          <li>Improved virtual assistant satisfaction by 25% through model improvements & tooling.</li>
-          <li>Built MLOps pipelines (Azure ML, Databricks, MLflow) reducing deployment time to <1 day.</li>
+          <li>Improved Virtual Health Assistant user satisfaction by 25% through NLP model improvements.</li>
+          <li>Built end-to-end MLOps pipelines with Azure ML, MLflow, Databricks.</li>
+          <li>Developed conversational AI enhancements with BioBERT & ClinicalBERT.</li>
         </ul>
       </div>
 
       <div class="exp-item">
-        <h4>Data Engineer</h4>
-        <div class="meta">DataBeat • Jun 2019 – Jun 2021 • Hyderabad, India</div>
+        <h4>Senior Data Engineer</h4>
+        <div class="meta">DataBeat • Jul 2019 – Dec 2021 • TX</div>
         <ul>
-          <li>Processed 500M+ monthly search events with Spark; reduced analytics latency from 24h to 3h.</li>
-          <li>Integrated Elasticsearch with relevance tuning; improved search accuracy 40%.</li>
+          <li>Processed 500M+ search events monthly using Spark & Kafka.</li>
+          <li>Improved search relevance & reduced no-result queries.</li>
+          <li>Built dashboards with Tableau & QuickSight.</li>
         </ul>
       </div>
 
       <div class="exp-item">
-        <h4>Python Developer</h4>
-        <div class="meta">iLink Digital • May 2017 – May 2019 • Chennai, India</div>
+        <h4>Data Analyst & Automation Engineer</h4>
+        <div class="meta">iLink Digital • Aug 2016 – Jun 2019 • TX</div>
         <ul>
-          <li>Automated 500K+ daily records; saved $50K annually; built REST APIs & ETL pipelines.</li>
+          <li>Reduced manual processing time by 65% via ETL automation.</li>
+          <li>Built APIs with Flask for real-time KPI delivery.</li>
+          <li>Optimized query performance by 70% using indexing and caching.</li>
         </ul>
-      </div>
-
-    </section>
-
-    <!-- CERTIFICATIONS & EDUCATION -->
-    <section class="section reveal" id="education">
-      <h2 class="section-title">Education & Certifications</h2>
-
-      <div style="display:flex; gap:12px; align-items:flex-start; flex-wrap:wrap;">
-        <div style="min-width:260px;">
-          <div class="cert">
-            <div class="title">MS, Computer Science</div>
-            University of North Texas
-          </div>
-          <div style="height:10px"></div>
-          <div class="cert">
-            <div class="title">BTech, Computer Science</div>
-            SRKR Engineering College
-          </div>
-        </div>
-
-        <div style="flex:1; min-width:260px;">
-          <div class="certs">
-            <div class="cert"><div class="title">AWS ML – Specialty</div>AWS Certified ML Specialty</div>
-            <div class="cert"><div class="title">Azure AI Associate</div>Microsoft Azure AI</div>
-            <div class="cert"><div class="title">Generative AI</div>DeepLearning.AI — LLMs</div>
-            <div class="cert"><div class="title">Mathematics for ML</div>Imperial College London</div>
-            <div class="cert"><div class="title">Databases & SQL</div>IBM</div>
-          </div>
-        </div>
       </div>
     </section>
 
-    <footer class="reveal">
-      © 2025 Leela Prasad A — Built for recruiters & hiring teams • <a href="mailto:leelaprasad.it@gmail.com">Contact</a>
-    </footer>
+    <!-- CERTIFICATIONS -->
+    <section class="section reveal" id="certifications">
+      <h2 class="section-title">Certifications</h2>
+      <div class="certs">
+        <div class="cert">
+          <div class="title">AWS Certified Machine Learning - Specialty</div>
+          <div>Issued Aug 2024</div>
+        </div>
+        <div class="cert">
+          <div class="title">Databricks Certified Data Engineer</div>
+          <div>Issued Dec 2023</div>
+        </div>
+        <div class="cert">
+          <div class="title">Azure AI Engineer Associate</div>
+          <div>Issued Nov 2023</div>
+        </div>
+      </div>
+    </section>
 
   </main>
 </div>
 
+<footer class="reveal">
+  <small>© 2025 Leela Prasad A | Built with ❤️ and pure HTML/CSS</small>
+</footer>
+
 <script>
-  // simple reveal on load and on scroll
-  function revealAll(){
-    document.querySelectorAll('.reveal').forEach((el,i)=>{
-      setTimeout(()=>el.classList.add('show'), 120 + i*80);
+  // Simple reveal on scroll
+  const reveals = document.querySelectorAll('.reveal');
+  function revealOnScroll() {
+    const windowHeight = window.innerHeight;
+    reveals.forEach(el => {
+      const top = el.getBoundingClientRect().top;
+      if (top < windowHeight - 80) {
+        el.classList.add('show');
+      }
     });
   }
-  window.addEventListener('load', revealAll);
+  window.addEventListener('scroll', revealOnScroll);
+  window.addEventListener('load', revealOnScroll);
 
-  // reveal on scroll for elements not yet shown
-  const obs = new IntersectionObserver((entries)=>{
-    entries.forEach(e=>{
-      if(e.isIntersecting) e.target.classList.add('show');
-    });
-  }, {threshold:0.15});
-  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
-
-  // accessible keyboard: when proj receives focus, show details (CSS handles :focus-within)
-  // open Gmail compose in new window but fallback to mailto if popup blocked
-  document.getElementById('openGmail')?.addEventListener('click', (ev)=>{
-    // prefer new tab to Gmail compose link already set on element; nothing else needed.
+  // Email link for mailto panel to open Gmail web compose if possible
+  document.getElementById('mailtoPanel').addEventListener('click', e => {
+    e.preventDefault();
+    window.open('https://mail.google.com/mail/?view=cm&fs=1&to=leelaprasad.it@gmail.com', '_blank', 'noopener');
   });
-
-  // LinkedIn placeholder: if you have link, replace href or update element.
-  const linkedinEl = document.getElementById('linkedinPlaceholder');
-  if(linkedinEl){
-    linkedinEl.addEventListener('click', (e)=>{
-      e.preventDefault();
-      alert('Send me your LinkedIn URL and I will wire it here.');
-    });
-  }
 </script>
+
 </body>
 </html>
+
 
 
